@@ -27,7 +27,7 @@ export default function Connect_viewers_screen() {
   const classes = useStyles();
   const [selected_viewer, set_selected_viewer] = useState('');
   const [disabled_btn, set_disabled_btn] = useState(true);
-  const available_viewers = ['Rani','Abhishek', 'Shalini Shaigal'];
+  const [available_viewers, set_available_viewers] = useState(['Rani','Abhishek', 'Shalini Shaigal']);
   const Select_viewer = (event) => {
     set_selected_viewer(event.target.value);
     if(event.target.value != ''){
