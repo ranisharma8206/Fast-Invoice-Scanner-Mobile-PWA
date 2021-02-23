@@ -23,19 +23,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Connect_viewers_screen() {
+export default function Connect_viewers_screen(props) {
   const classes = useStyles();
-  const [selected_viewer, set_selected_viewer] = useState('');
   const [disabled_btn, set_disabled_btn] = useState(true);
   const [available_viewers, set_available_viewers] = useState(['Rani','Abhishek', 'Shalini Shaigal']);
   const Select_viewer = (event) => {
-    set_selected_viewer(event.target.value);
+    props.set_selected_viewer(event.target.value);
     if(event.target.value != ''){
         set_disabled_btn(!disabled_btn);
     }
     else{
         set_disabled_btn(true);
     }
+  };
+  const connect = () => {
+    props.set_is_connected(true);
   };
   return (
     <div className={classes.root} style={{backgroundImage: `url("https://t3.ftcdn.net/jpg/03/55/60/70/360_F_355607062_zYMS8jaz4SfoykpWz5oViRVKL32IabTP.jpg")` }}>
@@ -49,7 +51,7 @@ export default function Connect_viewers_screen() {
         <Select
             labelId="demo-simple-select-filled-label"
             id="demo-simple-select-filled"
-            value={selected_viewer}
+            value={props.selected_viewer}
             onChange={Select_viewer}
         >
             <MenuItem value="">
@@ -66,6 +68,7 @@ export default function Connect_viewers_screen() {
             color="primary"
             className={classes.button}
             endIcon={<Connect_icon />}
+            onClick = {connect}
         >
             Connect
         </Button>
