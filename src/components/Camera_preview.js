@@ -41,7 +41,6 @@ export function Camera_preview(props) {
         // imageData = dataurl;
         // photo.setAttribute('src', imageData);
         props.socket.emit('scanner_get_image', dataurl);
-        
       })
       .catch(error => console.log(error));
   }
