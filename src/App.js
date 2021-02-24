@@ -19,7 +19,7 @@ function App() {
 
   if (is_connected) {
     return(
-      <Camera_preview socket={socket} />
+      <Camera_preview socket={socket} selected_viewer={selected_viewer} />
     );
   }
   return (

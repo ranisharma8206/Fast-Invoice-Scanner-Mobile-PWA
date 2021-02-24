@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from 'react';
 import IconButton from '@material-ui/core/IconButton';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import { Use_user_media } from '../custom_hooks/Use_user_media.js';
+const axios = require('axios');
+
 
 const CAPTURE_OPTIONS = {
     audio: false,
@@ -31,6 +33,26 @@ export function Camera_preview(props) {
     videoRef.current.play();
   }
 
+
+  function postData(data)
+  {
+    fetch('http://192.168.43.88:5000/uploadImage', {
+      method: 'POST', // or 'PUT'
+      mode:'no-cors',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+  }
+  function sendData(datauri, username){
+    console.log(datauri);
+    const data = { username: username, datauri:datauri };
+    console.log(data);
+    postData(data);
+    
+  }
+
   const btn_click = ()=>{
     console.log('snapped');
     console.log(imageCapture)
@@ -38,9 +60,7 @@ export function Camera_preview(props) {
       .then(blob =>  blobToDataURL(blob))
       .then(dataurl => {
         console.log(dataurl);
-        // imageData = dataurl;
-        // photo.setAttribute('src', imageData);
-        props.socket.emit('scanner_get_image', dataurl);
+        sendData(dataurl,props.selected_viewer);
       })
       .catch(error => console.log(error));
   }
