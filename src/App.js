@@ -3,7 +3,7 @@ import { Camera_preview } from './components/Camera_preview';
 import Connect_viewers_screen from './components/Connect_viewers_screen.js'
 import { io } from "socket.io-client";
 
-const socket = io("http://192.168.43.88:5000/");
+const socket = io("http://10.1.7.171:5000/");
 
 function App() {
   const [is_connected, set_is_connected] = useState(false);
