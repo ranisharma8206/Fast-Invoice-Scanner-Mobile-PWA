@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Camera_preview } from './components/Camera_preview';
 import Connect_viewers_screen from './components/Connect_viewers_screen.js'
-import { io } from "socket.io-client";
-
-const socket = io("http://testing.iitbhilai.ac.in:5000/");
+// import { io } from "socket.io-client";
+import {socket} from './services/socket';
+// const socket = io("http://192.168.29.212:5000/");
 
 function App() {
   const [is_connected, set_is_connected] = useState(false);

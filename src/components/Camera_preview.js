@@ -36,7 +36,7 @@ export function Camera_preview(props) {
 
   function postData(data)
   {
-    fetch('http://testing.iitbhilai.ac.in:5000/uploadImage', {
+    fetch('http://192.168.29.212:5000/uploadImage', {
       method: 'POST', // or 'PUT'
       mode:'no-cors',
       headers: {
